@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>Hello Spring Boot</title>
+<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
+	rel="stylesheet" />
+<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}"
+	rel="stylesheet" />
+</head>
+<body>
+	<div class="panel panel-default" style="margin: 10px">
+		<div class="panel-heading">
+			<h1 class="panel-title">Previsões para a semana em São Paulo</h1>
+		</div>
+<!-- 		<form class="form-inline" method="POST" th:object="${aluno}" th:action="@{/alunos}" style="margin: 20px 0">
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Nome" th:field="*{nome}" /> 
+				<input type="text" class="form-control" placeholder="Média" th:field="*{mediaNotas}" />
+				<button type="submit" class="btn btn-primary">Adicionar</button>
+			</div>
+		</form> -->
+		<div class="panel-body">
+			<table class="table">
+				<thead>
+					<tr>
+						<th> Dia de Semana </th>
+						<th style="text-align:center"> Temperatura Miníma </th>
+						<th style="text-align:center"> Temperatura Máxima </th>
+						<th style="text-align:center"> Umidade Relativa do Ar </th>
+						<th style="text-align:center"> Descrição </th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="previsao : ${previsoes}">
+						<td th:text="${previsao.diaDaSemana}"></td>
+						<td style="text-align:center" th:text="${previsao.temperaturaMin}"></td>
+						<td style="text-align:center" th:text="${previsao.temperaturaMax}"></td>
+						<td style="text-align:center" th:text="${previsao.umidadeDoAr}"></td>
+						<td style="text-align:center" th:text="${previsao.descricao}"></td>
+					</tr>
+				</tbody>
+			</table>
+			<p><b>Dados baseados em : </b> <a href="https://openweathermap.org/" >https://openweathermap.org/</a></p>
+		</div>
+	</div>
+</body>
+</html>
